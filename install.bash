@@ -32,9 +32,10 @@ install_omz2() {
     local plugin
     for plugin in "${PLUGINS[@]}"; do
         local package_name=${plugin##*/}
-        git clone "https://github.com/$plugin.git" "$OMZ_PLUGINS_DIR/$package_name"
+        local dir_name=${package_name%%-oh-my-zsh-plugins}
+        git clone "https://github.com/$plugin.git" "$OMZ_PLUGINS_DIR/$dir_name"
         sed -i \
-            "s/plugins=(\(.*\))/plugins=(\1 ${package_name%%-oh-my-zsh-plugins})/" \
+            "s/plugins=(\(.*\))/plugins=(\1 $dir_name)/" \
             ~/.zshrc
     done
 
