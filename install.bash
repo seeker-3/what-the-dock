@@ -34,7 +34,7 @@ install_omz2() {
         local package_name=${plugin##*/}
         git clone "https://github.com/$plugin.git" "$OMZ_PLUGINS_DIR/$package_name"
         sed -i \
-            "s/plugins=(\(.*\))/plugins=(\1 $package_name)/" \
+            "s/plugins=(\(.*\))/plugins=(\1 ${package_name%%-oh-my-zsh-plugins})/" \
             ~/.zshrc
     done
 
