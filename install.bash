@@ -15,7 +15,7 @@ AUTOUPDATE_REPO=https://github.com/tamcore/autoupdate-oh-my-zsh-plugins.git
 ZSH_AUTOSUGGEST_REPO=https://github.com/zsh-users/zsh-autosuggestions.git
 ZSH_SYNTAX_HIGHLIGHTING_REPO=https://github.com/zsh-users/zsh-syntax-highlighting.git
 
-SUDO=$(if command -v sudo; then echo sudo; fi)
+SUDO=$(command -v sudo || true)
 
 install_omz() {
     curl -fsSL "$OMZ_URL" | sh
