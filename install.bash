@@ -15,6 +15,8 @@ AUTOUPDATE_REPO=https://github.com/tamcore/autoupdate-oh-my-zsh-plugins.git
 ZSH_AUTOSUGGEST_REPO=https://github.com/zsh-users/zsh-autosuggestions.git
 ZSH_SYNTAX_HIGHLIGHTING_REPO=https://github.com/zsh-users/zsh-syntax-highlighting.git
 
+SUDO=$(if command -v sudo; then echo sudo; fi)
+
 install_omz() {
     curl -fsSL "$OMZ_URL" | sh
     git clone "$AUTOUPDATE_REPO" $OMZ_PLUGINS_DIR/autoupdate
@@ -23,7 +25,7 @@ install_omz() {
     sed -i \
         's/plugins=(\(.*\))/plugins=(\1 autoupdate zsh-autosuggestions zsh-syntax-highlighting)/' \
         ~/.zshrc
-    chsh -s /bin/zsh
+    "$SUDO" chsh -s /bin/zsh
 }
 
 install_omz2() {
@@ -39,13 +41,13 @@ install_omz2() {
             ~/.zshrc
     done
 
-    chsh -s /bin/zsh
+    "$SUDO" chsh -s /bin/zsh
 }
 
 if command -v apt-get >/dev/null; then
-    apt-get update
-    apt-get upgrade -y
-    apt-get install -y zsh git curl
+    "$SUDO" apt-get update
+    "$SUDO" apt-get upgrade -y
+    "$SUDO" apt-get install -y zsh git curl
     install_omz2
 else
     echo 'Unrecognized package manager' >&2

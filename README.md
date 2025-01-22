@@ -10,6 +10,12 @@ Basic usage:
 bash -c "$(curl -fsSL https://raw.github.com/seeker-3/what-the-dock/main/install.bash)"
 ```
 
+By default comes with:
+
+- `tamcore/autoupdate-oh-my-zsh-plugins`
+- `zsh-users/zsh-autosuggestions`
+- `zsh-users/zsh-syntax-highlighting`
+
 With additional plugins:
 
 ```bash
@@ -38,3 +44,7 @@ RUN apt-get clean
 RUN apt-get autoclean
 RUN apt-get -f install
 ```
+
+## Caveats
+
+Currently only supports `apt-get` but more could be added in the future.
