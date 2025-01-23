@@ -1,5 +1,9 @@
 set -euo pipefail
 
+noop() {
+    "$@"
+}
+
 OMZ_PLUGINS_DIR=~/.oh-my-zsh/custom/plugins
 
 PLUGINS=(
@@ -15,7 +19,7 @@ AUTOUPDATE_REPO=https://github.com/tamcore/autoupdate-oh-my-zsh-plugins.git
 ZSH_AUTOSUGGEST_REPO=https://github.com/zsh-users/zsh-autosuggestions.git
 ZSH_SYNTAX_HIGHLIGHTING_REPO=https://github.com/zsh-users/zsh-syntax-highlighting.git
 
-SUDO=$(command -v sudo || true)
+SUDO=$(command -v sudo || echo noop)
 
 install_omz() {
     curl -fsSL "$OMZ_URL" | sh
