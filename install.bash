@@ -52,7 +52,8 @@ if command -v apt-get >/dev/null; then
     "$SUDO" apt-get update
     "$SUDO" apt-get upgrade -y
     "$SUDO" apt-get install -y zsh git curl
-    install_omz2
 else
     echo 'Unrecognized package manager' >&2
 fi
+
+install_omz2
