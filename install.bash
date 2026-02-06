@@ -52,6 +52,8 @@ if command -v apt-get >/dev/null; then
     "$SUDO" apt-get update
     "$SUDO" apt-get upgrade -y
     "$SUDO" apt-get install -y zsh git curl
+elif command -v pacman >/dev/null; then
+    "$SUDO" pacman -Syu zsh git curl
 else
     echo 'Unrecognized package manager' >&2
 fi
